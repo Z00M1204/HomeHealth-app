@@ -1,0 +1,20 @@
+{
+  "nomprojekt": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nom-projekt-real-nomprojekt-115256-authRole",
+      "UnauthRoleArn": "arn:aws:iam::679540161114:role/amplify-nom-projekt-real-nomprojekt-115256-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::679540161114:role/amplify-nom-projekt-real-nomprojekt-115256-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-nom-projekt-real-nomprojekt-115256-deployment",
+      "UnauthRoleName": "amplify-nom-projekt-real-nomprojekt-115256-unauthRole",
+      "StackName": "amplify-nom-projekt-real-nomprojekt-115256",
+      "StackId": "arn:aws:cloudformation:eu-west-1:679540161114:stack/amplify-nom-projekt-real-nomprojekt-115256/34404050-9d07-11eb-ae8d-029aca27949d",
+      "AmplifyAppId": "dv0l6uaoa9yd9"
+    },
+    "categories": {
+      "auth": {
+        "NOMprojektreal": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+type UserStats @model @auth(rules: [{allow: owner, operations: [create, update, delete, read]}]) {
+  id: ID
+  highScore: Int
+  averageScore: Int
+}
+
+type StatSet @model @auth(rules: [{allow: owner, operations: [read, update, delete, create]}]) {
+  id: ID
+  AirQuality: Int
+  Username: String
+}
+
+type PublicStatSet @model @auth(rules: [{allow: private, operations: [read, update, create, delete]}]) {
+  id: ID
+  TopAirQuality: Int
+  Username: String
+  AuthID: String
+}
+
+type UserInfo @model @auth(rules: [{allow: owner, operations: [create, update, delete, read]}]) {
+  id: ID
+  Username: String
+  UserAuthID: String
+}
+ 
