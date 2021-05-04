@@ -24,9 +24,10 @@ type Props = {
 }
 
 const ConfirmUser: React.FC<Props> = ({ route, navigation }) => {
-
+    
     const [code, setCode] = React.useState('')
 
+    //Function to confirm user
     const confirmUserClick = async () => {
         try {
             await Auth.confirmSignUp(route.params?.username, code);

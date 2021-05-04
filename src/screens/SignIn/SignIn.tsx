@@ -22,6 +22,7 @@ type Props = {
     navigation: ScreenNavigationProp
 }
 
+//Styled-components
 const HeaderText = styled.Text`
     font-size: 50px;
     color: ${colors.mainBlack};
@@ -42,11 +43,11 @@ const SignIn: React.FC<Props> = ({ navigation }) => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
+    //Function used to sign in
     const signIn = async () => {
         try {
             await Auth.signIn(email, password);
             const user = await Auth.currentAuthenticatedUser()
-            console.log(user)
             navigation.navigate("Main")
         } catch (error) {
             showMessage({
@@ -54,19 +55,13 @@ const SignIn: React.FC<Props> = ({ navigation }) => {
                 type: "danger",
                 duration: 6000
             });
-            console.log('error signing in', error);
         }
     }
 
+    //Function used to call the signIn() function
     const signInClick = async () => {
         signIn()
-
     }
-
-    const deleteAll = async () => {
-        await DataStore.delete(StatSet, Predicates.ALL);
-    }
-
 
     return (
         <VerticalFlexContainer style={{ width: '100%', height: '100%' }}>

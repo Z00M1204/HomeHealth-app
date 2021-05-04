@@ -5,7 +5,6 @@ import Main from './Main'
 import { RootStackParams } from './RootStackParams'
 import SignIn from './SignIn/SignIn'
 import SignUp from './SignUp/SignUp'
-import UsernameScreen from './UsernameScreen/UsernameScreen'
 
 
 const Root = createStackNavigator<RootStackParams>()
@@ -19,7 +18,6 @@ const Index: React.FC = () => (
         <Root.Screen name="SignUp" component={SignUp} />
         <Root.Screen name="Main" component={Main} />
         <Root.Screen name="ConfirmUser" component={ConfirmUser} />
-        <Root.Screen name="UsernameScreen" component={UsernameScreen} />
     </Root.Navigator>
 )
 

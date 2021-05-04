@@ -17,9 +17,6 @@ import { PublicStatSet, StatSet } from '../../../models'
 import { TabScreenStackParams } from '../TabScreenStackParams'
 import { WelcomeStackParams } from '../WelcomeStackParams'
 
-
-
-
 type ScreenRouteProp = RouteProp<TabScreenStackParams, 'HomeScreen'>
 type ScreenNavigationProp = StackNavigationProp<TabScreenStackParams, 'HomeScreen'>
 
@@ -29,6 +26,7 @@ type Props = {
 }
 
 
+//styled-components
 const ProcentText = styled.Text`
     color: ${colors.mainBlack};
     font-size: 35px;
@@ -51,8 +49,9 @@ const HomeScreen: React.FC<Props> = () => {
     const [airQualValue, setAirQualValue] = React.useState(0)
     const [circleText, setCircleText] = React.useState(0)
 
+    //Effect hook used to start the setInterval function when the screen renders
     React.useEffect(() => {
-
+        //setInterval funciton to get get the data from the Firebase database and call the newAirQualPush() and createOrUpdatePublicStats() functions, every second.
         const interval = setInterval(() => {
             firebase.database()
                 .ref('/')
@@ -72,6 +71,7 @@ const HomeScreen: React.FC<Props> = () => {
         }
     })
 
+    //Function used to create or update the PublicStatSet in the AWS Datastore database
     const createOrUpdatePublicStats = async () => {
         const daUser = await Auth.currentAuthenticatedUser()
         const userEmail = daUser.attributes.email
@@ -80,8 +80,6 @@ const HomeScreen: React.FC<Props> = () => {
         const statSets = await DataStore.query(StatSet, c => c.Username("eq", userEmail), {
             sort: s => s.AirQuality(SortDirection.DESCENDING)
         });
-
-        console.log(user)
 
         if (user.length > 0) {
             setCircleText(statSets[0].AirQuality)
@@ -105,7 +103,7 @@ const HomeScreen: React.FC<Props> = () => {
         }
     }
 
-
+    //Function used to push a new StatSet to the AWS Datastore database
     const newAirQualPush = async () => {
 
         const daUser = await (Auth.currentAuthenticatedUser())

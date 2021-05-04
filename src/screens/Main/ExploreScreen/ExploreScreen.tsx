@@ -26,27 +26,28 @@ const ExploreScreen: React.FC<Props> = (p) => {
     const [leaderList, setLeaderList] = React.useState([])
     const [myPosition, setMyPosition] = React.useState(0)
 
+    //Effect hook that loads the leaderboard when the screen renders
     React.useEffect(() => {
-            getLeaderBoard()
+        getLeaderBoard()
     }, [])
 
+    //Function used to get the leaderboard from AWS and update the state hooks
     const getLeaderBoard = async () => {
         const statSets = await DataStore.query(PublicStatSet, Predicates.ALL, {
             sort: s => s.TopAirQuality(SortDirection.DESCENDING)
         });
 
-        console.log(statSets)
         const filteredList = []
 
         for (let i = 0; i < statSets.length; i++) {
             if (statSets[i].Username !== null && statSets[i].TopAirQuality !== null) {
                 filteredList.push(statSets[i])
             }
-        } 
+        }
         const daUser = await Auth.currentAuthenticatedUser()
         const userEmail = daUser.attributes.email
 
-         const currentStatSet = await DataStore.query(StatSet, c => c.Username("eq", userEmail), {
+        const currentStatSet = await DataStore.query(StatSet, c => c.Username("eq", userEmail), {
             sort: s => s.AirQuality(SortDirection.DESCENDING)
         });
 

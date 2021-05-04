@@ -6,5 +6,4 @@ export type RootStackParams = {
         username: string,
         password: string
     } | undefined,
-    UsernameScreen: undefined
 }

@@ -41,9 +41,9 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
     //username is an email in this case
     const [username, setUsername] = React.useState('')
 
-
+    //Function used to sign up
     const signUp = async () => {
-
+        //Function used to check if the email and password entered are valid
         const inputsAreValid = () => {
             return username.length > 6 && password.length > 8
         }
@@ -55,7 +55,7 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                 duration: 6000
             });
         }
-
+        //Try catch statement to sign the user up, and throw an error if the sign up fails
         try {
             const { user } = await Auth.signUp({
                 username,
@@ -71,7 +71,6 @@ const SignUp: React.FC<Props> = ({ navigation }) => {
                 type: "danger",
                 duration: 6000
             });
-            console.log('error signing up:', error);
         }
     }
 

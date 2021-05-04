@@ -37,16 +37,17 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
     const [highestAirQual, setHighestAirQual] = React.useState(0)
     const [loaded, setLoaded] = React.useState(false)
     const [recAmount, setRecAmount] = React.useState(0)
-
+    
+    //Effect hook used to start the setInterval function when the screen renders
     React.useEffect(() => {
-        //const userEmail = user.attributes.email
+        //setInterval funciton to call the getUserInfo() funciton, every 5th second.
         const interval = setInterval(() => {
             getUserInfo()
         }, 5000);
 
         return () => clearInterval(interval);
     }, [])
-
+    //Function used to get user information from AWS Datastore
     const getUserInfo = async () => {
         const daUser = await (Auth.currentAuthenticatedUser())
         const userEmail = daUser.attributes.email
@@ -59,16 +60,17 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
         setLoaded(true)
     }
 
+    //Function used to sign out the current user
     const signOut = async () => {
         try {
             const user = await Auth.currentAuthenticatedUser()
             await user.signOut();
         } catch (error) {
-            console.log('error signing out: ', error);
         }
         navigation.navigate("SignIn")
     }
 
+    //Function used to call the signOut() function
     const signOutClick = () => {
         signOut()
     }
