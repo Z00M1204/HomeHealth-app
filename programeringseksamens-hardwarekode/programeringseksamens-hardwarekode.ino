@@ -15,8 +15,8 @@
 
 #define FIREBASE_HOST "ddu2-luftsensor-default-rtdb.europe-west1.firebasedatabase.app"
 #define FIREBASE_AUTH "t2TYK8zLhafajd3OkFjAftf3m5EFV9X0vpDtjkGC"
-#define WIFI_SSID "suddenlink.net-E690"
-#define WIFI_PASSWORD "251165071927"
+#define WIFI_SSID "AndroidAPdf41"
+#define WIFI_PASSWORD "600ad800"
 
 Adafruit_BME680 bme;
 
